@@ -1,5 +1,7 @@
 # Indian Stock Market Live Trading Assistant
 
+Trade prediction system that uses AI to summarize and generate easy-to-understand trade suggestions while predicting stock behavior.
+
 A Flask web app that displays NSE stock data, model-based price estimates, a basic risk analysis, recent news sentiment, and a prediction log. It uses AI to summarize the analysis in beginner-friendly language.
 
 > This project is for learning and demonstration only. It is not financial advice, and predictions can be inaccurate. Verify information independently before making financial decisions.

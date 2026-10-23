@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🇮🇳 Indian Stock Market Live Assistant</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-blue-800">🇮🇳 Indian Stock Market Live Trading Assistant</h1>
+            <p class="text-gray-600 mt-2">💡 AI Prediction + Blockchain + Real-Time Data</p>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="flex justify-center mb-6">
+            <div class="w-full max-w-md">
+                <input list="stock-symbols" id="stock-input" type="text"
+                       placeholder="Type NSE symbol (e.g., TCS, RELIANCE)"
+                       class="w-full px-4 py-2 border rounded-l-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <datalist id="stock-symbols">
+                    {% for sym in symbols %}
+                        <option value="{{ sym }}">{{ sym }}</option>
+                    {% endfor %}
+                </datalist>
+            </div>
+            <button id="load-btn" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-r-lg transition">Load Stock</button>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div id="loading" class="text-center hidden">
+            <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-700"></div>
+            <p class="mt-2">Fetching live data...</p>
+        </div>
+
+        <!-- Dashboard Content -->
+        <div id="dashboard" class="hidden">
+            <!-- Live Data & Prediction Row -->
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                <div class="bg-white rounded-lg shadow p-5">
+                    <h2 class="text-xl font-semibold border-b pb-2 mb-3">📊 Live Market Data</h2>
+                    <div id="live-data"></div>
+                </div>
+                <div class="bg-white rounded-lg shadow p-5">
+                    <h2 class="text-xl font-semibold border-b pb-2 mb-3">🤖 AI Prediction</h2>
+                    <div id="prediction"></div>
+                </div>
+            </div>
+
+            <!-- Risk Analysis -->
+            <div class="bg-white rounded-lg shadow p-5 mb-6">
+                <h2 class="text-xl font-semibold border-b pb-2 mb-3">⚠️ Risk Analysis</h2>
+                <div id="risk"></div>
+            </div>
+
+            <!-- Price Chart -->
+            <div class="bg-white rounded-lg shadow p-5 mb-6">
+                <h2 class="text-xl font-semibold border-b pb-2 mb-3">📈 Price Chart</h2>
+                <div id="chart-container" class="flex justify-center">
+                    <img id="chart-img" class="max-w-full rounded" alt="Price chart">
+                </div>
+            </div>
+
+            <!-- News Sentiment -->
+            <div class="bg-white rounded-lg shadow p-5 mb-6">
+                <h2 class="text-xl font-semibold border-b pb-2 mb-3">📰 Latest News & Sentiment</h2>
+                <div id="news"></div>
+            </div>
+
+                <div class="bg-blue-50 border-l-4 border-blue-600 rounded-lg shadow p-5 mb-6">
+                    <h2 class="text-xl font-semibold mb-3">💡 AI Recommendation (For Beginners)</h2>
+                    <div id="ai-summary-text" class="text-gray-800 text-lg italic">
+                        Gemini's summary will appear here.
+                    </div>
+                </div>
+
+            <!-- Blockchain Record -->
+            <div class="bg-white rounded-lg shadow p-5">
+                <h2 class="text-xl font-semibold border-b pb-2 mb-3">🔗 Blockchain Log (Last Block)</h2>
+                <div id="blockchain" class="text-xs font-mono bg-gray-100 p-3 rounded overflow-x-auto"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

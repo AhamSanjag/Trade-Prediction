@@ -1,0 +1,28 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+.venv/
+ENV/
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Project artifacts not needed in source control
+*.pptx
+*.pdf
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log

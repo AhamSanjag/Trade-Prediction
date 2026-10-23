@@ -1,0 +1,11 @@
+flask
+flask-cors
+google-genai
+matplotlib
+numpy
+pandas
+python-dotenv
+requests
+scikit-learn
+textblob
+yfinance
